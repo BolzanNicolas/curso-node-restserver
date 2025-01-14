@@ -24,10 +24,10 @@ const validateJWT = async(req = request, res = response, next) => {
       })
     }
 
-    // Verify user state
-    if (!user.state) {
+    // Verify user status
+    if (!user.status) {
       return res.status(401).json({
-        msg: 'Invalid token - user state: false'
+        msg: 'Invalid token - user status: false'
       })
     }
 

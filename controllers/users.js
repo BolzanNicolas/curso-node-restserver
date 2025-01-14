@@ -4,7 +4,7 @@ const User = require("../models/user");
 
 const getUsers = async(req, res) => {
   const { limit = 5, from = 0 } = req.query;
-  const query = { state: true }
+  const query = { status: true }
 
   const [total, users] = await Promise.all([
     User.countDocuments(query),
@@ -53,7 +53,7 @@ const postUser = async(req, res) => {
 const deleteUser = async(req, res) => {
   const { id } = req.params;
 
-  const user = await User.findByIdAndUpdate(id, { state: false, }, { new: true });
+  const user = await User.findByIdAndUpdate(id, { status: false, }, { new: true });
   const authUser  = req.user;
 
   res.json({ user, authUser });

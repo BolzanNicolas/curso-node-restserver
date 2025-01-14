@@ -17,9 +17,9 @@ const login = async (req, res = response) => {
     }
 
     // If user is active
-    if (!user.state) {
+    if (!user.status) {
       return res.status(400).json({
-        msg: "User / Password are not correct - state: false",
+        msg: "User / Password are not correct - status: false",
       });
     }
 
@@ -69,7 +69,7 @@ const googleSignIn = async (req, res = response) => {
     }
 
     // If user is deleted
-    if(!user.state) {
+    if(!user.status) {
       return res.status(401).json({
         msg: 'Please contact the administrator, user is blocked'
       });
@@ -80,7 +80,7 @@ const googleSignIn = async (req, res = response) => {
 
     res.json({
       user,
-      id_token,
+      token,
     });
   } catch (error) {
     res.status(400).json({

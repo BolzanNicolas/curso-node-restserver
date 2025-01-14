@@ -14,7 +14,11 @@ const {
   hasRole
 } = require('../middlewares');
 
-const { isValidRole, emailExists, userExists } = require("../helpers/db-validators");
+const { 
+  isValidRole,
+  emailExists,
+  userExists
+} = require("../helpers/db-validators");
 
 const router = Router();
 
